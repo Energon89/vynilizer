@@ -178,6 +178,10 @@ function onoff() {
   } else {
     off();
   }
+  audio.onended = function() {
+    stopwatch.resetTimer();
+    off();
+  };
 }
 
 function off() {

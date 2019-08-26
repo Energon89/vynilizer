@@ -1,0 +1,27 @@
+body {
+  background: rgb(67, 41, 128);
+  color: white;
+}
+
+canvas {
+  border: 2px solid black;
+  margin-top: 20px;
+}
+
+p,
+.output {
+  margin: 20px;
+  font-size: 24px;
+  font-variant: small-caps;
+  text-align: center;
+}
+
+p:hover {
+  cursor: pointer;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

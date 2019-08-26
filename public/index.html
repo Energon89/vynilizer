@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>JS Boilerplace</title>
+    <link rel="stylesheet" href="../src/style.css" />
+  </head>
+  <body>
+    <center>
+      <canvas class="recordplayer" width="800" height="600"></canvas>
+    </center>
+    <div class="container">
+      <div class="output">00:00:00:000</div>
+      <select class="audiofile">
+        <option disabled selected value="not selected"
+          >-- Select an audio file --</option
+        >
+        <option
+          value="https://cdn.drivemusic.me/dl/online/r4h74VJHxJJ6cOaPUt5C6w/1566865412/download_music/2017/05/linkin-park-one-more-light.mp3"
+          >Linkin park - One More Light</option
+        >
+        <option
+          value="https://cdn.drivemusic.me/dl/online/30ODc-1KjcyviQ7kvBWMXw/1566865412/download_music/2012/04/linkin-park-burn-it-down.mp3"
+          >Linkin park - Burn it Down</option
+        >
+        <option
+          value="https://cdn5.sefon.me/files/prev/104/Lumen%20-%20%D0%93%D0%BE%D1%80%D0%B5%D1%82%D1%8C%20%28128%29.mp3"
+          >Lumen - Гореть</option
+        >
+      </select>
+      <p class="switch">ON/OFF</p>
+    </div>
+    <script type="module" src="../src/modules/main.js"></script>
+  </body>
+</html>

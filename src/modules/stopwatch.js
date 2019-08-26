@@ -47,6 +47,9 @@ function startTimer(duration) {
     if (millisec < 100) {
       millisec = `0${millisec}`;
     }
+    if (millisec === 1000) {
+      millisec = `000`;
+    }
 
     htmlElements.output.innerText = `${hours}:${minutes}:${seconds}:${millisec}`;
   }, 10);

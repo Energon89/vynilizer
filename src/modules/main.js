@@ -87,5 +87,5 @@ function updateTrackTime() {
 
 function rotate() {
   //const finalAngle = angle + 100;
-  htmlElements.toneArm.setAttribute("transform", "rotate(300deg)");
+  htmlElements.toneBase.setAttribute("style", "transform: rotate(25deg)");
 }

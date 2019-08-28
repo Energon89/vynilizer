@@ -15,6 +15,8 @@ let displacement = 0;
 let duration = 0;
 let pause = false;
 
+new CircleType(document.querySelector(".text")).radius();
+
 htmlElements.onOff.addEventListener("click", onoff);
 htmlElements.audioFileSelect.addEventListener("change", () => {
   if (onoffswitch !== "running") {

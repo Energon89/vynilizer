@@ -56,25 +56,20 @@ body {
 
 .slider {
   position: absolute;
-  height: 130px;
-  width: 5px;
-  background: #333333;
-  border: 1px solid black;
-  border-radius: 7px;
   bottom: 30px;
   right: 30px;
+  display: inline-block;
+  width: 20px;
+  height: 150px;
+  padding: 0;
 }
 
-.slider:after {
-  position: absolute;
-  content: "";
-  height: 25px;
-  width: 40px;
-  background: #1c1c1c;
-  border: 1px solid black;
-  border-radius: 3px;
-  left: -18px;
-  top: 20px;
+.slider input {
+  width: 150px;
+  height: 20px;
+  margin: 0;
+  transform-origin: 75px 75px;
+  transform: rotate(-90deg);
 }
 
 .buttons {
@@ -225,8 +220,13 @@ body {
   right: 12px;
   top: 20px;
   background: linear-gradient(135deg, #4d4d4d 60%, #333333 60%);
-  transition: transform 3s ease-in-out;
+  transition: transform 0.1s ease-in-out;
   z-index: 100;
+}
+
+.rotate {
+  transform: rotate(25deg);
+  transition: transform 0.1s ease-in-out;
 }
 
 .tonearm-movement {

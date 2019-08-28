@@ -4,12 +4,16 @@ const htmlElements = {
   platter: document.querySelector(".platter"),
   output: document.querySelector(".output"),
   toneArm: document.querySelector(".toneArmTwo"),
-  toneBase: document.querySelector(".toneBase")
+  toneBase: document.querySelector(".toneBase"),
+  volume: document.querySelector(".range")
 };
 let audioValue = htmlElements.audioFileSelect.value;
 let audio, time;
 let onoffswitch = "running";
-let angle = 0;
+let angle;
+let displacement = 0;
+let duration = 0;
+let pause = false;
 
 htmlElements.onOff.addEventListener("click", onoff);
 htmlElements.audioFileSelect.addEventListener("change", () => {
@@ -18,30 +22,44 @@ htmlElements.audioFileSelect.addEventListener("change", () => {
   }
   audioValue = htmlElements.audioFileSelect.value;
   audio = new Audio(audioValue);
+  console.log(htmlElements.audioFileSelect.name);
+  htmlElements.volume.addEventListener("change", function() {
+    audio.volume = this.value;
+  });
+  audio.addEventListener("loadedmetadata", function() {
+    duration = audio.duration;
+    angle = 25;
+    displacement = 25 / duration / 100;
+  });
   toggleButton();
+  htmlElements.toneBase.setAttribute("style", "transform: rotate(0deg)");
+  htmlElements.output.innerText = "00:00:00:000";
 });
 
 function onoff() {
   if (onoffswitch === "running") {
-    htmlElements.platter.classList.add("platter-spin");
-    //htmlElements.toneBase.classList.add("tonearm-movement");
-    audio.play();
-    onoffswitch = "off";
-    time = setInterval(updateTrackTime, 10);
-    rotate();
+    rotate().then(() => {
+      htmlElements.toneBase.classList.remove("rotate");
+      htmlElements.platter.classList.add("platter-spin");
+      audio.play();
+      onoffswitch = "off";
+      time = setInterval(updateTrackTime, 10);
+    });
   } else {
     off();
   }
   audio.onended = function() {
     off();
+    htmlElements.output.innerText = "00:00:00:000";
+    htmlElements.toneBase.setAttribute("style", "transform: rotate(0deg)");
   };
 }
 
 function off() {
   htmlElements.platter.classList.remove("platter-spin");
-  //htmlElements.toneBase.classList.remove("tonearm-movement");
   audio.pause();
   onoffswitch = "running";
+  pause = true;
   htmlElements.onOff.checked = false;
   clearInterval(time);
 }
@@ -58,6 +76,7 @@ toggleButton();
 
 function updateTrackTime() {
   const currTime = audio.currentTime;
+
   let millisec = parseInt(currTime * 1000) % 1000;
   let seconds = parseInt(currTime % 60);
   let minutes = parseInt((currTime / 60) % 60);
@@ -83,9 +102,26 @@ function updateTrackTime() {
   }
 
   htmlElements.output.innerText = `${hours}:${minutes}:${seconds}:${millisec}`;
+  const finalAngle = 50;
+  angle = angle + displacement;
+
+  if (angle < finalAngle) {
+    htmlElements.toneBase.setAttribute(
+      "style",
+      "transform: rotate(" + angle + "deg)"
+    );
+  }
 }
 
 function rotate() {
-  //const finalAngle = angle + 100;
-  htmlElements.toneBase.setAttribute("style", "transform: rotate(25deg)");
+  if (pause === false) {
+    return new Promise(resolve => {
+      htmlElements.toneBase.classList.add("rotate");
+      setTimeout(() => resolve(), 1000);
+    });
+  } else {
+    return new Promise(resolve => {
+      resolve();
+    });
+  }
 }

@@ -420,7 +420,7 @@ input:checked + .slider1:before {
   transform: translateX(26px);
 }
 
-.text {
+/* .text {
   position: absolute;
   color: rgb(28, 121, 207);
   z-index: 100;
@@ -428,4 +428,4 @@ input:checked + .slider1:before {
   font-variant: small-caps;
   top: 20px;
   left: 170px;
-}
+} */

@@ -1,5 +1,3 @@
-//import "./circletype.min.js";
-
 const htmlElements = {
   onOff: document.querySelector(".checkbox"),
   audioFileSelect: document.querySelector(".audiofile"),

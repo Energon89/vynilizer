@@ -1,4 +1,4 @@
-import "./circletype.min.js";
+//import "./circletype.min.js";
 
 const htmlElements = {
   onOff: document.querySelector(".checkbox"),
@@ -17,8 +17,7 @@ let displacement = 0;
 let duration = 0;
 let pause = false;
 
-const myText = new CircleType(document.querySelector(".text"));
-myText.radius();
+//new CircleType(document.querySelector(".text")).radius();
 
 htmlElements.onOff.addEventListener("click", onoff);
 htmlElements.audioFileSelect.addEventListener("change", () => {
